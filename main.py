@@ -25,7 +25,7 @@ import json
 
 st.set_page_config(page_title="Chat with Confluence space")    
 
-persist_directory = "./db/chroma/"
+# persist_directory = "./db/chroma/"
 
 default_url = st.secrets["CONFLUENCE_URL"]
 default_api = st.secrets["ATLASSIAN_API_KEY"]
@@ -74,7 +74,7 @@ def load_tools_each_page(page_data,url,email,api_key):
         embeddings = HuggingFaceInferenceAPIEmbeddings(
             api_key = HF_token,model_name = "sentence-transformers/all-MiniLM-L6-v2"
         )
-        vector = Chroma.from_documents(documents, embeddings,persist_directory=persist_directory)
+        vector = Chroma.from_documents(documents, embeddings)
         retriever = vector.as_retriever()
 
         retrieverTool = create_retriever_tool(
