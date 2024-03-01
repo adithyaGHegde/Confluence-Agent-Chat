@@ -26,8 +26,6 @@ import json
 st.set_page_config(page_title="Chat with Confluence space")    
 
 persist_directory = "./db/chroma/"
-if not os.path.exists("Data"):
-    os.makedirs("Data")
 
 default_url = st.secrets["CONFLUENCE_URL"]
 default_api = st.secrets["ATLASSIAN_API_KEY"]
